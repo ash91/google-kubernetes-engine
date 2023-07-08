@@ -1,14 +1,14 @@
-## Course Modules
+# Course Modules
 
-1.  Google Cloud Account Creation
-2.  Create GKE Standard Public Cluster
-3.  Install gcloud CLI on mac OS
-4.  Install gcloud CLI on Windows OS
-5.  Docker Fundamentals
-6.  Kubernetes Pods
-7.  Kubernetes ReplicaSets
-8.  Kubernetes Deployment - CREATE
-9.  Kubernetes Deployment - UPDATE
+1. Google Cloud Account Creation
+2. Create GKE Standard Public Cluster
+3. Install gcloud CLI on mac OS
+4. Install gcloud CLI on Windows OS
+5. Docker Fundamentals
+6. Kubernetes Pods
+7. Kubernetes ReplicaSets
+8. Kubernetes Deployment - CREATE
+9. Kubernetes Deployment - UPDATE
 10. Kubernetes Deployment - ROLLBACK
 11. Kubernetes Deployments - Pause and Resume
 12. Kubernetes ClusterIP and Load Balancer Service
@@ -71,15 +71,15 @@
 
 ## Kubernetes Concepts Covered
 
-1.  Kubernetes Deployments (Create, Update, Rollback, Pause, Resume)
-2.  Kubernetes Pods
-3.  Kubernetes Service of Type LoadBalancer
-4.  Kubernetes Service of Type ClusterIP
-5.  Kubernetes Ingress Service
-6.  Kubernetes Storage Class
-7.  Kubernetes Storage Persistent Volume
-8.  Kubernetes Storage Persistent Volume Claim
-9.  Kubernetes Cluster Autoscaler
+1. Kubernetes Deployments (Create, Update, Rollback, Pause, Resume)
+2. Kubernetes Pods
+3. Kubernetes Service of Type LoadBalancer
+4. Kubernetes Service of Type ClusterIP
+5. Kubernetes Ingress Service
+6. Kubernetes Storage Class
+7. Kubernetes Storage Persistent Volume
+8. Kubernetes Storage Persistent Volume Claim
+9. Kubernetes Cluster Autoscaler
 10. Kubernetes Horizontal Pod Autoscaler
 11. Kubernetes Namespaces
 12. Kubernetes Namespaces Resource Quota
@@ -94,15 +94,15 @@
 
 ## Google Services Covered
 
-1.  Google GKE Standard Cluster
-2.  Google GKE Autopilot Cluster
-3.  Compute Engine - Virtual Machines
-4.  Compute Engine - Storage Disks
-5.  Compute Engine - Storage Snapshots
-6.  Compute Engine - Storage Images
-7.  Compute Engine - Instance Groups
-8.  Compute Engine - Health Checks
-9.  Compute Engine - Network Endpoint Groups
+1. Google GKE Standard Cluster
+2. Google GKE Autopilot Cluster
+3. Compute Engine - Virtual Machines
+4. Compute Engine - Storage Disks
+5. Compute Engine - Storage Snapshots
+6. Compute Engine - Storage Images
+7. Compute Engine - Instance Groups
+8. Compute Engine - Health Checks
+9. Compute Engine - Network Endpoint Groups
 10. VPC Networks - VPC
 11. VPC Network - External and Internal IP Addresses
 12. VPC Network - Firewall
