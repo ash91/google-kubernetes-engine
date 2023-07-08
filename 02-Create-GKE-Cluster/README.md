@@ -4,12 +4,14 @@ description: Learn to create Google Kubernetes Engine GKE Cluster
 ---
 
 ## Step-01: Introduction
-- Create GKE Standard GKE Cluster 
+
+- Create GKE Standard GKE Cluster
 - Configure Google CloudShell to access GKE Cluster
-- Deploy simple Kubernetes Deployment and Kubernetes Load Balancer Service and Test 
+- Deploy simple Kubernetes Deployment and Kubernetes Load Balancer Service and Test
 - Clean-Up
 
-## Step-02: Create Standard GKE Cluster 
+## Step-02: Create Standard GKE Cluster
+
 - Go to Kubernetes Engine -> Clusters -> CREATE
 - Select **GKE Standard -> CONFIGURE**
 - **Cluster Basics**
@@ -26,7 +28,7 @@ description: Learn to create Google Kubernetes Engine GKE Cluster
   - **Name:** default-pool
   - **Number of Nodes (per zone):** 1
   - **Node Pool Upgrade Strategy:** Surge Upgrade
-- **Nodes: Configure node settings** 
+- **Nodes: Configure node settings**
   - **Image type:** Containerized Optimized OS
   - **Machine configuration**
     - **GENERAL PURPOSE SERIES:** E2
@@ -35,12 +37,12 @@ description: Learn to create Google Kubernetes Engine GKE Cluster
   - **Boot disk size(GB):** 20
   - **Boot disk encryption:** Google-managed encryption key (default )
   - **Enable Node on Spot VMs:** CHECKED
-- **Node Networking:** LEAVE TO DEFAULTS  
-- **Node Security:** 
+- **Node Networking:** LEAVE TO DEFAULTS
+- **Node Security:**
   - **Access scopes:** Allow default access (LEAVE TO DEFAULT)
   - REST ALL REVIEW AND LEAVE TO DEFAULTS
 - **Node Metadata:** REVIEW AND LEAVE TO DEFAULTS
-- **CLUSTER** 
+- **CLUSTER**
   - **Automation:** REVIEW AND LEAVE TO DEFAULTS
   - **Networking:** REVIEW AND LEAVE TO DEFAULTS
     - **CHECK THIS BOX: Enable Dataplane V2** CHECK IT - IN FUTURE VERSIONS IT WILL BE BY DEFAULT ENABLED
@@ -51,6 +53,7 @@ description: Learn to create Google Kubernetes Engine GKE Cluster
 - CLICK ON **CREATE**
 
 ## Step-03: Verify Cluster Details
+
 - Go to Kubernetes Engine -> Clusters -> **standard-public-cluster-1**
 - Review
   - Details Tab
@@ -63,20 +66,25 @@ description: Learn to create Google Kubernetes Engine GKE Cluster
     - Review Cluster Logs **Filter By Severity**
 
 ## Step-04: Verify Additional Features in GKE on a High-Level
+
 ### Step-04-01: Verify Workloads Tab
+
 - Go to Kubernetes Engine -> Clusters -> **standard-public-cluster-1**
 - Workloads -> **SHOW SYSTEM WORKLOADS**
 
 ### Step-04-02: Verify Services & Ingress
+
 - Go to Kubernetes Engine -> Clusters -> **standard-public-cluster-1**
 - Services & Ingress -> **SHOW SYSTEM OBJECTS**
 
 ### Step-04-03: Verify Applications, Secrets & ConfigMaps
+
 - Go to Kubernetes Engine -> Clusters -> **standard-public-cluster-1**
 - Applications
 - Secrets & ConfigMaps
 
 ### Step-04-04: Verify Storage
+
 - Go to Kubernetes Engine -> Clusters -> **standard-public-cluster-1**
 - Storage Classes
   - premium-rwo
@@ -84,6 +92,7 @@ description: Learn to create Google Kubernetes Engine GKE Cluster
   - standard-rwo
 
 ### Step-04-05: Verify the below
+
 1. Object Browser
 2. Migrate to Containers
 3. Backup for GKE
@@ -91,16 +100,18 @@ description: Learn to create Google Kubernetes Engine GKE Cluster
 5. Protect
 
 ## Step-05: Google CloudShell: Connect to GKE Cluster using kubectl
+
 - [kubectl Authentication in GKE](https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke)
+
 ```t
 # Verify gke-gcloud-auth-plugin Installation (if not installed, install it)
-gke-gcloud-auth-plugin --version 
+gke-gcloud-auth-plugin --version
 
 # Install Kubectl authentication plugin for GKE
 sudo apt-get install google-cloud-sdk-gke-gcloud-auth-plugin
 
 # Verify gke-gcloud-auth-plugin Installation
-gke-gcloud-auth-plugin --version 
+gke-gcloud-auth-plugin --version
 
 # Configure kubeconfig for kubectl
 gcloud container clusters get-credentials <CLUSTER-NAME> --region <REGION> --project <PROJECT-NAME>
@@ -138,10 +149,12 @@ kubectl config view
 ```
 
 ## Step-06: Review Sample Application: 01-kubernetes-deployment.yaml
+
 - **Folder:** kube-manifests
+
 ```yaml
 apiVersion: apps/v1
-kind: Deployment 
+kind: Deployment
 metadata: #Dictionary
   name: myapp1-deployment
 spec: # Dictionary
@@ -149,38 +162,40 @@ spec: # Dictionary
   selector:
     matchLabels:
       app: myapp1
-  template:  
+  template:
     metadata: # Dictionary
       name: myapp1-pod
       labels: # Dictionary
-        app: myapp1  # Key value pairs
+        app: myapp1 # Key value pairs
     spec:
       containers: # List
         - name: myapp1-container
           image: stacksimplify/kubenginx:1.0.0
-          ports: 
-            - containerPort: 80  
-    
+          ports:
+            - containerPort: 80
 ```
 
 ## Step-07: Review Sample Application: 02-kubernetes-loadbalancer-service.yaml
+
 - **Folder:** kube-manifests
+
 ```yaml
 apiVersion: v1
-kind: Service 
+kind: Service
 metadata:
   name: myapp1-lb-service
 spec:
   type: LoadBalancer # ClusterIp, # NodePort
   selector:
     app: myapp1
-  ports: 
+  ports:
     - name: http
       port: 80 # Service Port
       targetPort: 80 # Container Port
 ```
 
 ## Step-08: Upload Sample App to Google CloudShell
+
 ```t
 # Upload Sample App to Google CloudShell
 Go to Google CloudShell -> 3 Dots -> Upload -> Folder -> google-kubernetes-engine
@@ -197,6 +212,7 @@ cat kube-manifests/02-kubernetes-loadbalancer-service.yaml
 ```
 
 ## Step-09: Deploy Sample Application and Verify
+
 ```t
 # Change Directory
 cd google-kubernetes-engine/02-Create-GKE-Cluster
@@ -218,21 +234,26 @@ http://<EXTERNAL-IP>
 ```
 
 ## Step-10: Verify Workloads in GKE Dashboard
+
 - Go to GCP Console -> Kubernetes Engine -> Workloads
-- Click on  **myapp1-deployment**
+- Click on **myapp1-deployment**
 - Review all tabs
 
 ## Step-11: Verify Services in GKE Dashboard
+
 - Go to GCP Console -> Kubernetes Engine -> Services & Ingress
 - Click on **myapp1-lb-service**
 - Review all tabs
 
 ## Step-13: Verify Load Balancer
+
 - Go to GCP Console -> Networking Services -> Load Balancing
 - Review all tabs
 
 ## Step-14: Clean-Up
+
 - Go to Google Cloud Shell
+
 ```t
 # Change Directory
 cd google-kubernetes-engine/02-Create-GKE-Cluster
@@ -249,6 +270,3 @@ kubectl get pod
 # List Services
 kubectl get svc
 ```
-
-
-
